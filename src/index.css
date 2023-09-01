@@ -1,69 +1,28 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+  
+  #box {
+    background:url(https://cdn.rawgit.com/ManzDev/cursos-assets/gh-pages/css3/earth-2.jpg);
+    background-size:cover;
+    border:2px solid #000;
+    border-radius:50%;
+    width:200px;
+    height:200px;
+    animation: movimiento 15s linear 0s infinite;
+    box-shadow:0 0 25px RGBA(255,255,255, 0.10),
+               -8px -8px 15px #000 inset,
+               2px 2px 25px #000 inset,
+               -45px -45px 25px RGBA(0,0,0, 0.5) inset, 
+               25px 25px 45px RGBA(0,0,0, 0.45) inset;
+    margin:6em auto;
+    transform:rotateX(6deg) rotateY(6deg) rotateZ(6deg);
   }
-  a:hover {
-    color: #747bff;
+  
+  @keyframes movimiento {
+    0% { background-position:0 0 }
+    100% { background-position:355px 0 }
   }
-  button {
-    background-color: #f9f9f9;
+  
+  @keyframes stars {
+    0% { background-position:0 0 }
+    100% { background-position:0 100% }
   }
-}
