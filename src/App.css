@@ -1,9 +1,20 @@
 * {
   margin: 0;
   padding: 0;
+  text-decoration: none;
 }
 
-/* LANDING PAGE */
+body {
+  font-family: "Noto Sans Symbols 2", sans-serif;
+  font-family: "Roboto Mono", monospace;
+  background-color: bisque;
+}
+
+.wrapper {
+  padding: 40px 40px 40px 130px;
+}
+
+/* ----- LANDING PAGE ----- */
 
 #landing-page {
   overflow: hidden;
@@ -71,4 +82,152 @@
   width: 100vw;
   height: 100vh;
   object-fit: cover;
+}
+
+/* ----- HOME PAGE ----- */
+
+.yellow-div {
+  background-image: url(./public/images/bg1.png);
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.red-div {
+  background-color: red;
+  width: 100%;
+  height: 100vh;
+}
+
+.blue-div {
+  background-color: blue;
+  width: 100%;
+  height: 100vh;
+}
+
+.pink-div {
+  background-color: pink;
+  width: 100%;
+  height: 100vh;
+}
+
+.brown-div {
+  background-color: brown;
+  width: 100%;
+  height: 100vh;
+}
+
+.top-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.top-content .top-content-ironhack-logo {
+  width: 100px;
+  height: auto;
+  z-index: 2;
+  position: relative;
+  margin-left: 25px;
+  margin-top: 25px;
+}
+
+.top-content h1 {
+  margin-left: 50px;
+  margin-top: 45px;
+  font-size: 50px;
+  color: white;
+  font-weight: bold;
+  z-index: 2;
+  position: relative;
+}
+
+.bottom-content {
+  position: relative;
+  top: 650px;
+  margin-left: 35%;
+}
+
+.bottom-content h3 {
+  color: white;
+  z-index: 2;
+  position: absolute;
+  box-sizing: border-box;
+  position: absolute;
+  font-weight: 700;
+  line-height: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  text-decoration: none;
+  top: 0;
+  left: 0;
+}
+
+.scroll-container {
+  width: 10px;
+  height: 60px;
+  border: 2px solid #fff;
+  border-radius: 15px;
+  position: absolute;
+  position: 100%;
+  left: 200px;
+}
+
+.scroller {
+  width: 2px;
+  border-radius: 8px;
+  background-color: #fff;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  bottom: 4px;
+  animation: scroller 2500ms ease-out infinite;
+}
+
+@keyframes scroller {
+  0% {
+    bottom: 30px;
+  }
+  5% {
+    top: 4px;
+  }
+  32% {
+    bottom: 4px;
+  }
+  66% {
+    top: 34px;
+    bottom: 4px;
+  }
+  100% {
+    top: 4px;
+    bottom: 30px;
+  }
+}
+
+
+/* ----- LOGIN PAGE ----- */
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+
+/* ----- SIGNUP PAGE ----- */
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
 }
