@@ -11,6 +11,7 @@ function UserProfilePage() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
+    const [user, setUser] = useState(null);
     // Logout
     const { logOutUser, tokenUpdate } = useContext(AuthContext);
 
@@ -28,6 +29,7 @@ function UserProfilePage() {
             const response = await axios.get(`${API_URL}/user-profile`, {
                 headers: { Authorization: `Bearer ${storedToken}` },
             });
+
             setFirstName(response.data.firstName);
             setLastName(response.data.lastName);
             setEmail(response.data.email);
@@ -36,9 +38,20 @@ function UserProfilePage() {
         }
     };
 
+    const storedToken = localStorage.getItem("authToken");
+
     useEffect(() => {
         getProfile();
-    }, []);
+        axios
+            .get(`${API_URL}/user-profile`, {
+                headers: { Authorization: `Bearer ${storedToken}` },
+            })
+            .then((response) => {
+                const currentUser = response.data;
+                setUser(currentUser);
+            })
+            .catch((error) => console.log(error));
+    }, [storedToken]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -49,7 +62,6 @@ function UserProfilePage() {
             await axios.put(`${API_URL}/user-profile`, body, {
                 headers: { Authorization: `Bearer ${storedToken}` },
             });
-
             setFirstName("");
             setLastName("");
             setEmail("");
@@ -81,7 +93,6 @@ function UserProfilePage() {
     return (
         <div>
             <h3>Profile</h3>
-
             <form onSubmit={handleSubmit}>
                 <label>First Name:</label>
                 <br />
@@ -116,13 +127,16 @@ function UserProfilePage() {
                 <Link to="/user-profile/newArticle">
                     <button>Create new Article</button>
                 </Link>
-
-                
             </div>
             <div>
-
-            <ArticlePage user={getProfile} />
-            
+                <h1>Articles</h1>
+                <div>
+                    {/* {user.articles.map((article) => (
+                        <div key={article._id}>
+                            <p>{article.generalComment}</p>
+                        </div>
+                    ))} */}
+                </div>
             </div>
         </div>
     );

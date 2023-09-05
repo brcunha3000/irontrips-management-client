@@ -10,10 +10,32 @@ function CountryDetailsPage() {
     const { countryCode } = useParams();
     const storedToken = localStorage.getItem("authToken");
 
-    // Handle Submit Function
+    // Add to favourites
     const addToMyFavorites = () => {
         axios
             .post(`${API_URL}/theglobe/addFavorites/${countryCode}`, "", {
+                headers: { Authorization: `Bearer ${storedToken}` },
+            })
+            .then(() => {
+                axios
+                    .get(`${API_URL}/theglobe/${countryCode}`, "", {
+                        headers: { Authorization: `Bearer ${storedToken}` },
+                    })
+                    .then((response) => {
+                        const updateCountry = response.data;
+                        setCountry(updateCountry);
+                    })
+                    .catch((error) => console.log(error));
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+    // Add to favourites
+    const addToMyVisited = () => {
+        axios
+            .post(`${API_URL}/theglobe/addVisited/${countryCode}`, "", {
                 headers: { Authorization: `Bearer ${storedToken}` },
             })
             .then(() => {
@@ -56,6 +78,9 @@ function CountryDetailsPage() {
 
                     <button onClick={addToMyFavorites} type="submit">
                         Add favorites
+                    </button>
+                    <button onClick={addToMyVisited} type="submit">
+                        Add visited
                     </button>
                 </div>
             )}
