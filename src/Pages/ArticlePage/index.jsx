@@ -21,7 +21,7 @@ function ArticlePage() {
     const [cost, setCost] = useState("");
     const [gallery, setGallery] = useState("");
     // Use states
-    const [countryCode, setCountryCode] = useState(null);
+    const [countryCode, setCountryCode] = useState("");
     const [user, setUser] = useState(null);
 
     const navigate = useNavigate();
@@ -76,16 +76,19 @@ function ArticlePage() {
                 <form onSubmit={handleSubmit}>
                     <label>
                         Country:
-                        <select
-                            name="countryCode"
-                            onChange={(e) => setCountryCode(e.target.value)}
-                        >
+                        {/* <select name="countryCode">
                             {user.visitedCountries.map((country) => (
                                 <option key={country._id} value={country.cca2}>
                                     {country.name.common}
                                 </option>
                             ))}
-                        </select>
+                        </select> */}
+                        <input
+                            type="text"
+                            name="countryCode"
+                            value={countryCode}
+                            onChange={(e) => setCountryCode(e.target.value)}
+                        />
                     </label>
                     <label>
                         Comment:
