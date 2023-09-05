@@ -1,6 +1,7 @@
 .navbar {
-  width: 50px;
+  width: 100px;
   margin-left: 900px;
+  margin-top: 20px;
   background-color: transparent;
   color: #ffffff;
   display: flex;
@@ -12,10 +13,10 @@
   transition: width 0.5s ease;
 }
 
-
-.navbar .material-icons{
+.navbar .material-icons {
   font-size: 50px;
-  color: goldenrod
+  color: goldenrod;
+  cursor: pointer;
 }
 
 .navbar .material-icons.taking-off {
@@ -25,9 +26,8 @@
 .menu {
   list-style: none;
   padding: 0;
-  margin: 0;
-  max-height: 0; 
-  overflow: hidden; 
+  max-height: 0;
+  overflow: hidden;
   transition: max-height 0.5s ease-in-out;
 }
 
@@ -43,15 +43,9 @@ ul {
 .menu li:hover {
   margin: 10px 20px;
   color: goldenrod;
+  text-decoration: underline;
 }
 
 .logout-button {
   cursor: pointer;
 }
-
-
-
-
-
-
-

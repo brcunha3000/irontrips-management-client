@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const API_URL = "http://localhost:5005";
 
@@ -14,6 +16,10 @@ function SignupPage(props) {
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,57 +38,72 @@ function SignupPage(props) {
   };
 
   return (
-    <div className="signup">
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          First Name:
-          <input
-            type="text"
-            name="firstName"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          ></input>
-        </label>
-        <label>
-          Last Name:
-          <input
-            type="text"
-            name="lastName"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          ></input>
-        </label>
-        <label>
-          Username:
-          <input
-            type="text"
-            name="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          ></input>
-        </label>
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          ></input>
-        </label>
-        <label>
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          ></input>
-        </label>
-        <button type="submit">Create an account</button>
-        {errorMessage && <p>{errorMessage}</p>}
-      </form>
+    <div
+      className="parent-signup-div"
+      data-aos="flip-up"
+      data-aos-duration="1000"
+    >
+      <div className="signup">
+        <h1>
+          Create an account<span className="dot">.</span>
+        </h1>
+        <form onSubmit={handleSubmit}>
+          <label>
+            First Name:
+            <input
+              className="text"
+              type="text"
+              name="firstName"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            ></input>
+          </label>
+          <label>
+            Last Name:
+            <input
+              className="text"
+              type="text"
+              name="lastName"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            ></input>
+          </label>
+          <label>
+            Username:
+            <input
+              className="text"
+              type="text"
+              name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            ></input>
+          </label>
+          <label>
+            Email:
+            <input
+              className="text"
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+          </label>
+          <label>
+            Password:
+            <input
+              className="text"
+              type="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            ></input>
+          </label>
+          <button className="button-login" type="submit">
+            Signup
+          </button>
+          {errorMessage && <p>{errorMessage}</p>}
+        </form>
+      </div>
     </div>
   );
 }

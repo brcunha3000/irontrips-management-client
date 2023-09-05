@@ -2,13 +2,14 @@ import { Link, useLocation } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../Context/auth.context";
 import "./Navbar.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function NavBar() {
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isTakingOff, setIsTakingOff] = useState(false);
   const [menuHeight, setMenuHeight] = useState("0px");
-  const location = useLocation();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -19,8 +20,12 @@ function NavBar() {
     setMenuHeight(menuOpen ? "100px" : "0px");
   }, [menuOpen]);
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
-    <div className={"navbar"}>
+    <div className={"navbar"} data-aos="fade-up" data-aos-duration="3000">
       <i
         className={`material-icons${isTakingOff ? " taking-off" : ""}`}
         onClick={toggleMenu}

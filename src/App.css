@@ -7,11 +7,7 @@
 body {
   font-family: "Noto Sans Symbols 2", sans-serif;
   font-family: "Roboto Mono", monospace;
-  background-color: bisque;
-}
-
-.wrapper {
-  padding: 40px 40px 40px 130px;
+  background-color: rgb(248, 220, 185);
 }
 
 /* ----- LANDING PAGE ----- */
@@ -86,7 +82,7 @@ body {
 
 /* ----- HOME PAGE ----- */
 
-.yellow-div {
+.main-div {
   background-image: url(./public/images/bg1.png);
   width: 100%;
   height: 100vh;
@@ -98,37 +94,32 @@ body {
   flex-direction: column;
 }
 
-.red-div {
-  background-color: red;
+.second-div {
   width: 100%;
   height: 100vh;
-}
-
-.blue-div {
-  background-color: blue;
-  width: 100%;
-  height: 100vh;
-}
-
-.pink-div {
-  background-color: pink;
-  width: 100%;
-  height: 100vh;
-}
-
-.brown-div {
-  background-color: brown;
-  width: 100%;
-  height: 100vh;
-}
-
-.top-content {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.second-div .section-1,
+.second-div .section-2,
+.second-div .section-3,
+.second-div .section-4,
+.second-div .section-5,
+.second-div .section-6 {
+  margin-bottom: 20px;
+}
+
+.second-div .text-wrapper {
+  max-width: 800px;
+  text-align: center;
+  padding: 20px;
+  margin: 30px;
 }
 
 .top-content .top-content-ironhack-logo {
-  width: 100px;
+  width: 80px;
   height: auto;
   z-index: 2;
   position: relative;
@@ -136,51 +127,92 @@ body {
   margin-top: 25px;
 }
 
-.top-content h1 {
-  margin-left: 50px;
-  margin-top: 45px;
-  font-size: 50px;
+.home-page-text {
   color: white;
-  font-weight: bold;
-  z-index: 2;
-  position: relative;
+  margin-top: 90px;
+  text-align: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 70px;
+}
+
+.home-page-text h1 {
+  text-shadow: 0 0 30px black;
+  margin: 0;
+}
+
+.home-page-text h6 {
+  text-shadow: 0 0 30px black;
+  font-size: 30px;
+  color: goldenrod;
 }
 
 .bottom-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  top: 650px;
-  margin-left: 35%;
+  height: 100vh;
 }
 
-.bottom-content h3 {
+.bottom-content-text {
   color: white;
   z-index: 2;
-  position: absolute;
-  box-sizing: border-box;
-  position: absolute;
   font-weight: 700;
   line-height: 18px;
   text-transform: uppercase;
   letter-spacing: 1.6px;
   text-decoration: none;
-  top: 0;
+  position: absolute;
+  bottom: 100px;
   left: 0;
+  right: 0;
+  text-align: center;
 }
 
-.scroll-container {
-  width: 10px;
+.bottom-content .scroll-container {
+  width: 14px;
   height: 60px;
   border: 2px solid #fff;
   border-radius: 15px;
   position: absolute;
-  position: 100%;
-  left: 200px;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.scroller {
+.bottom-content .scroll-container .scroller {
   width: 2px;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: goldenrod;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  bottom: 4px;
+  animation: scroller 2500ms ease-out infinite;
+}
+
+.footer-second-div .bottom-content-text h3 {
+  color: black;
+  margin-top: 20px;
+}
+
+.footer-second-div .scroll-container {
+  width: 14px;
+  height: 60px;
+  border: 2px solid #020202;
+  border-radius: 15px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.footer-second-div .scroll-container .scroller {
+  width: 2px;
+  border-radius: 8px;
+  background-color: goldenrod;
   position: absolute;
   top: 4px;
   left: 4px;
@@ -208,26 +240,250 @@ body {
   }
 }
 
-
 /* ----- LOGIN PAGE ----- */
-
-.login {
+.parent-login-div {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: center;
-  min-height: 100vh;
+  align-items: center;
+  height: 100vh;
 }
 
+.login {
+  position: relative;
+  width: 300px;
+  height: 500px;
+  margin: auto;
+  top: 25%;
+  transform: translateY(-50%);
+  padding: 60px;
+  background-color: #505050;
+  background-size: cover;
+  box-shadow: 0px 30px 60px -5px #000;
+  color: white;
+  border-radius: 20px;
+}
+
+.dot {
+  color: goldenrod;
+}
+
+.login form {
+  padding-top: 80px;
+}
+
+.login .text {
+  border: none;
+  width: 89%;
+  padding: 10px 20px;
+  display: block;
+  height: 15px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0);
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.login .text:focus {
+  outline: 0;
+  border: 2px solid goldenrod;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0);
+}
+
+.login input[type="email"],
+.login input[type="password"] {
+  color: #fff;
+}
+
+.custom-checkbox {
+  margin-top: 10px;
+}
+.custom-checkbox-label {
+  margin-top: 10px;
+  font-size: 10px;
+  margin-left: 10px;
+}
+
+.button-login {
+  background-color: goldenrod;
+  color: #fff;
+  width: 100%;
+  padding: 10px 20px;
+  display: block;
+  height: 39px;
+  border-radius: 20px;
+  margin-top: 30px;
+  transition: all 0.5s ease-in-out;
+  border: 1px solid white;
+  text-transform: uppercase;
+}
+
+.button-login:hover {
+  background: goldenrod;
+  box-shadow: 0px 4px 35px -5px goldenrod;
+  cursor: pointer;
+}
+
+.login .f-password {
+  font-size: 10px;
+  text-align: center;
+  display: block;
+  top: 5px;
+  position: relative;
+  text-decoration: none;
+  color: rgba(245, 244, 244, 0.2);
+}
+
+.login a {
+  font-weight: bold;
+  font-size: 10px;
+  text-align: center;
+  display: block;
+  top: 70px;
+  position: relative;
+  text-decoration: none;
+  color: rgba(245, 244, 244, 0.2);
+}
 
 /* ----- SIGNUP PAGE ----- */
 
-.signup {
+.parent-signup-div {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.signup {
+  position: relative;
+  width: 300px;
+  height: 650px;
+  margin: auto;
+  top: 40%;
+  transform: translateY(-50%);
+  padding: 60px;
+  background-color: #505050;
+  background-size: cover;
+  box-shadow: 0px 30px 60px -5px #000;
+  color: white;
+  border-radius: 20px;
+}
+
+.signup form {
+  padding-top: 80px;
+}
+
+.signup .text {
+  border: none;
+  width: 89%;
+  padding: 10px 20px;
+  display: block;
+  height: 15px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0);
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.signup .text:focus {
+  outline: 0;
+  border: 2px solid goldenrod;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0);
+}
+
+.signup input[type="text"],
+.signup input[type="email"],
+.signup input[type="password"] {
+  color: #fff;
+}
+
+.button-login {
+  background-color: goldenrod;
+  color: #fff;
+  width: 100%;
+  padding: 10px 20px;
+  display: block;
+  height: 39px;
+  border-radius: 20px;
+  margin-top: 30px;
+  transition: all 0.5s ease-in-out;
+  border: 1px solid white;
+  text-transform: uppercase;
+}
+
+.button-login:hover {
+  background: goldenrod;
+  box-shadow: 0px 4px 35px -5px goldenrod;
+  cursor: pointer;
+}
+
+/* ----- GLOBE PAGE ----- */
+
+.globe-page-main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.globe-page-layout {
   align-items: center;
   justify-content: center;
-  text-align: center;
-  min-height: 100vh;
+}
+
+.globe-page-continent-selector {
+  top: 500px;
+  display: flex;
+}
+
+.select-box {
+  cursor: pointer;
+  position: relative;
+  max-width: 20em;
+  margin: 5em auto;
+  width: 300px;
+}
+
+.select,
+.label {
+  color: #414141;
+  display: block;
+  font: 400 17px/2em "Source Sans Pro", sans-serif;
+}
+
+.select {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  padding: 5px 0;
+  height: 40px;
+  opacity: 0;
+  border: 0 none;
+}
+.select-box1 {
+  background: #ececec;
+}
+
+.label {
+  position: relative;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.open .label::after {
+  content: "▲";
+}
+.label::after {
+  content: "▼";
+  font-size: 12px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 5px 15px;
+  border-left: 5px solid #fff;
 }
