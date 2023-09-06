@@ -55,13 +55,13 @@ function TheGlobePage() {
         <div>
 
         <figure>
-          <img src="https://picsum.photos/id/287/250/300" alt="Mountains"/>
+          <img src="https://picsum.photos/id/287/250/300" alt="Mountains"></img>
           <figcaption>The Day</figcaption>
         </figure>
-<figure style="--c:#fff5">
-    <img src="https://picsum.photos/id/475/250/300" alt="Mountains"/>
-    <figcaption>The Night</figcaption>
-</figure>
+        <figure>
+          <img src="https://picsum.photos/id/475/250/300" alt="Mountains"></img>
+          <figcaption>The Night</figcaption>
+        </figure>
         {/*}
           <form action="#">
             <div className="select-box">
