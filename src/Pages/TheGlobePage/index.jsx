@@ -53,6 +53,16 @@ function TheGlobePage() {
         </div>*/}
         <div id="box"></div>
         <div>
+
+        <figure>
+          <img src="https://picsum.photos/id/287/250/300" alt="Mountains"/>
+          <figcaption>The Day</figcaption>
+        </figure>
+<figure style="--c:#fff5">
+    <img src="https://picsum.photos/id/475/250/300" alt="Mountains"/>
+    <figcaption>The Night</figcaption>
+</figure>
+        {/*}
           <form action="#">
             <div className="select-box">
               <label htmlFor="select-box1" className="label select-box1">
@@ -74,7 +84,7 @@ function TheGlobePage() {
                 <option value="6">Oceania</option>
               </select>
             </div>
-          </form>
+          </form>*/}
         </div>
       </div>
     </div>

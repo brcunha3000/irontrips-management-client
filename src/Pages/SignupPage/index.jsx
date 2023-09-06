@@ -4,7 +4,7 @@ import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://irontrips-backend.onrender.com";
 
 function SignupPage(props) {
   const [firstName, setFirstName] = useState("");
