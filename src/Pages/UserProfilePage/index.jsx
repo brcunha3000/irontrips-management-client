@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
 
@@ -9,7 +9,6 @@ function UserProfilePage() {
 
     const [user, setUser] = useState(null);
     const storedToken = localStorage.getItem("authToken");
-    const navigate = useNavigate();
 
     useEffect(() => {
         axios
@@ -24,17 +23,6 @@ function UserProfilePage() {
                 console.log(error);
             });
     }, [setUser, storedToken]);
-
-    const deleteArticle = (articleId) => {
-        axios
-            .delete(`${API_URL}/user-profile/${articleId}`)
-            .then(() => {
-                navigate("/user-profile");
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
 
     return (
         <div>
@@ -54,14 +42,9 @@ function UserProfilePage() {
                                     </h2>
                                     <h3>{article.generalComment}</h3>
                                     <p>{article.review}</p>
-
-                                    <button
-                                        onClick={() =>
-                                            deleteArticle(article._id)
-                                        }
-                                    >
-                                        Delete
-                                    </button>
+                                    <Link to={`/editArticle/${article._id}`}>
+                                        <button>Edit Article</button>
+                                    </Link>
                                 </div>
                             );
                         })}
@@ -74,6 +57,7 @@ function UserProfilePage() {
             <div>
                 <Link to="/user-profile/newArticle">Create Article</Link>
             </div>
+            <div></div>
         </div>
     );
 }
