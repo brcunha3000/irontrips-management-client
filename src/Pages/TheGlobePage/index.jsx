@@ -35,7 +35,7 @@ function TheGlobePage() {
           >
             <img
               className="top-content-community-ironhack-logo"
-              src="./public/images/ironhack-logo.png"
+              src="/images/ironhack-logo.png"
               alt="Ironhack Logo"
             ></img>
           </a>
@@ -53,7 +53,7 @@ function TheGlobePage() {
         </div>*/}
         <div id="box"></div>
         <div>
-        <form action="#">
+          <form action="#">
             <div className="select-box">
               <label htmlFor="select-box1" className="label select-box1">
                 <span className="label-desc">Pick the continent</span>{" "}
@@ -63,7 +63,9 @@ function TheGlobePage() {
                 className="select"
                 onChange={handleSelectChange}
               >
-                <option selected value="">Select the continent</option>
+                <option selected value="">
+                  Select the continent
+                </option>
                 <option value="1">Asia</option>
                 <option value="2">Africa</option>
                 <option value="3">Europe</option>

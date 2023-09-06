@@ -4,10 +4,7 @@ function LandingPage() {
   return (
     <div id="landing-page">
       <video autoPlay loop muted playsInline className="back-video">
-        <source
-          src="../../public/videos/globe-landing-page.mp4"
-          type="video/mp4"
-        />
+        <source src="/videos/globe-landing-page.mp4" type="video/mp4" />
       </video>
 
       <div className="landing-content">

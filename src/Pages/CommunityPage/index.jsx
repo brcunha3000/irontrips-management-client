@@ -29,7 +29,7 @@ function CommunityPage() {
           >
             <img
               className="top-content-community-ironhack-logo"
-              src="./public/images/ironhack-logo.png"
+              src="/images/ironhack-logo.png"
               alt="Ironhack Logo"
             ></img>
           </a>

@@ -10,7 +10,7 @@ function HomePage() {
 
   return (
     <div id="home" data-aos="fade-down">
-      <div className="main-div" >
+      <div className="main-div">
         <div className="top-content">
           <div>
             <a
@@ -20,7 +20,7 @@ function HomePage() {
             >
               <img
                 className="top-content-ironhack-logo"
-                src="./public/images/ironhack-logo.png"
+                src="/images/ironhack-logo.png"
                 alt="Ironhack Logo"
               ></img>
             </a>
@@ -50,7 +50,10 @@ function HomePage() {
             data-aos="fade-up"
             data-aos-duration="3000"
           >
-            <h2><span className="irontrips-span">Iron Trips</span>: Crafting Journeys, Connecting Explorers</h2>
+            <h2>
+              <span className="irontrips-span">Iron Trips</span>: Crafting
+              Journeys, Connecting Explorers
+            </h2>
             <br></br>
             <p>
               Welcome to IronTrips, a fusion of travel enthusiasts and web
