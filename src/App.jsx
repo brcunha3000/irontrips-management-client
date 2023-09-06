@@ -22,6 +22,7 @@ import Asia from "./Components/Continents/Asia";
 import Europe from "./Components/Continents/Europe";
 import Oceania from "./Components/Continents/Oceania";
 import UserProfileEdit from "./Pages/UserProfileEdit";
+import EditArticlePage from "./Pages/EditArticlePage";
 
 function App() {
     const location = useLocation();
@@ -58,6 +59,10 @@ function App() {
                     <Route
                         path="/user-profile/newArticle"
                         element={<ArticlePage />}
+                    />
+                    <Route
+                        path="/editArticle/:articleId"
+                        element={<EditArticlePage />}
                     />
                 </Routes>
             </AuthProviderWrapper>
