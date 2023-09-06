@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../Context/auth.context";
-import "./Navbar.css";
+import "./NavBar.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
