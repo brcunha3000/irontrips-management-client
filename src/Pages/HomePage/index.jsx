@@ -9,8 +9,8 @@ function HomePage() {
   }, []);
 
   return (
-    <div id="home" data-aos="fade-up" data-aos-duration="2000">
-      <div className="main-div">
+    <div id="home" data-aos="fade-down">
+      <div className="main-div" >
         <div className="top-content">
           <div>
             <a
@@ -32,7 +32,7 @@ function HomePage() {
           </div>
         </div>
         <div className="bottom-content">
-          <ScrollLink to="second-div" smooth={true} duration={500}>
+          <ScrollLink to="second-div" smooth={true} duration={1500}>
             <div className="bottom-content-text">
               <h3>Who we are and what is our purpose</h3>
             </div>
@@ -50,7 +50,8 @@ function HomePage() {
             data-aos="fade-up"
             data-aos-duration="3000"
           >
-            <h2>Iron Trips: Crafting Journeys, Connecting Explorers</h2>
+            <h2><span className="irontrips-span">Iron Trips</span>: Crafting Journeys, Connecting Explorers</h2>
+            <br></br>
             <p>
               Welcome to IronTrips, a fusion of travel enthusiasts and web
               developers forging a dynamic community. We're avid explorers
@@ -124,7 +125,7 @@ function HomePage() {
           </div>
         </div>
         <div className="footer-second-div">
-          <ScrollLink to="main-div" smooth={true} duration={500}>
+          <ScrollLink to="main-div" smooth={true} duration={1500}>
             <div className="scroll-container">
               <div className="scroller"></div>
             </div>

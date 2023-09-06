@@ -25,7 +25,58 @@ function TheGlobePage() {
   };
 
   return (
-    <div className="globe-page-main-container">
+    <div>
+      <div className="top-content-community">
+        <div>
+          <a
+            href="https://www.ironhack.com/pt/en/lisbon"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              className="top-content-community-ironhack-logo"
+              src="./public/images/ironhack-logo.png"
+              alt="Ironhack Logo"
+            ></img>
+          </a>
+        </div>
+        <div>
+          <h2>Iron Trips - The World Globe</h2>
+        </div>
+      </div>
+      <div>
+        {/*<div>
+          <img
+            src="https://static.mundoeducacao.uol.com.br/mundoeducacao/2022/11/mapa-mundi-indicando-os-seis-continentes-da-terra.jpg"
+            alt="World Map"
+          />
+        </div>*/}
+        <div id="box"></div>
+        <div>
+        <form action="#">
+            <div className="select-box">
+              <label htmlFor="select-box1" className="label select-box1">
+                <span className="label-desc">Pick the continent</span>{" "}
+              </label>
+              <select
+                id="select-box1"
+                className="select"
+                onChange={handleSelectChange}
+              >
+                <option selected value="">Select the continent</option>
+                <option value="1">Asia</option>
+                <option value="2">Africa</option>
+                <option value="3">Europe</option>
+                <option value="4">South America</option>
+                <option value="5">North America</option>
+                <option value="6">Oceania</option>
+              </select>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    /*<div className="globe-page-main-container">
       <div className="globe-page-layout">
         <div>
           <img
@@ -44,6 +95,7 @@ function TheGlobePage() {
                 className="select"
                 onChange={handleSelectChange}
               >
+                <option selected value="">Select the continent</option>
                 <option value="1">Asia</option>
                 <option value="2">Africa</option>
                 <option value="3">Europe</option>
@@ -55,7 +107,7 @@ function TheGlobePage() {
           </form>
         </div>
       </div>
-    </div>
+    </div>*/
   );
 }
 

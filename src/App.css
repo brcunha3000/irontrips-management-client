@@ -108,11 +108,15 @@ body {
 .second-div .section-4,
 .second-div .section-5,
 .second-div .section-6 {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.irontrips-span {
+  font-size: 30px;
 }
 
 .second-div .text-wrapper {
-  max-width: 800px;
+  max-width: 850px;
   text-align: center;
   padding: 20px;
   margin: 30px;
@@ -333,7 +337,7 @@ body {
   top: 5px;
   position: relative;
   text-decoration: none;
-  color: rgba(245, 244, 244, 0.2);
+  color: white;
 }
 
 .login a {
@@ -344,7 +348,7 @@ body {
   top: 70px;
   position: relative;
   text-decoration: none;
-  color: rgba(245, 244, 244, 0.2);
+  color: white;
 }
 
 /* ----- SIGNUP PAGE ----- */
@@ -432,6 +436,31 @@ body {
   margin: 0;
 }
 
+#box {
+  background: url(https://cdn.rawgit.com/ManzDev/cursos-assets/gh-pages/css3/earth-2.jpg);
+  background-size: cover;
+  border: 2px solid #000;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  animation: rotating 5s linear 0s infinite;
+  box-shadow: 0 0 25px RGBA(255, 255, 255, 0.1), -8px -8px 15px #000 inset,
+    2px 2px 25px #000 inset, -25px -15px 25px RGBA(0, 0, 0, 0.5) inset,
+    25px 25px 45px RGBA(0, 0, 0, 0.45) inset;
+  margin: 6em auto;
+  transform: rotateX(6deg) rotateY(6deg) rotateZ(6deg);
+  filter: brightness(1.9); /* Adjust the brightness value as needed */
+}
+
+@keyframes rotating {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 355px 0;
+  }
+}
+
 .globe-page-layout {
   align-items: center;
   justify-content: center;
@@ -454,7 +483,6 @@ body {
 .label {
   color: #414141;
   display: block;
-  font: 400 17px/2em "Source Sans Pro", sans-serif;
 }
 
 .select {
@@ -475,9 +503,7 @@ body {
   padding: 5px 10px;
   cursor: pointer;
 }
-.open .label::after {
-  content: "▲";
-}
+
 .label::after {
   content: "▼";
   font-size: 12px;
@@ -486,4 +512,15 @@ body {
   top: 0;
   padding: 5px 15px;
   border-left: 5px solid #fff;
+}
+
+/* ----- COMMUNITY PAGE ----- */
+
+.top-content-community .top-content-community-ironhack-logo {
+  width: 80px;
+  height: auto;
+  z-index: 2;
+  position: relative;
+  margin-left: 25px;
+  margin-top: 25px;
 }

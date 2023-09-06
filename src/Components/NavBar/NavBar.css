@@ -1,15 +1,15 @@
 .navbar {
+  position: fixed;
+  top: 20px;
+  right: 20px;
   width: 100px;
-  margin-left: 900px;
-  margin-top: 20px;
   background-color: transparent;
   color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  z-index: 50;
+  z-index: 1000;
   transition: width 0.5s ease;
 }
 
@@ -19,8 +19,9 @@
   cursor: pointer;
 }
 
-.navbar .material-icons.taking-off {
-  animation: takeoff 0.5s forwards;
+.menu-active {
+  max-height: 200px;
+  transition: max-height 0.5s ease-in-out;
 }
 
 .menu {
@@ -29,19 +30,16 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.5s ease-in-out;
-}
-
-ul {
-  display: flex;
-  flex-direction: row;
+  background-color: transparent;
 }
 
 .menu li {
-  margin: 10px 20px;
+  margin: 10px 0;
   color: #ffffff;
+  transition: color 0.3s ease;
 }
+
 .menu li:hover {
-  margin: 10px 20px;
   color: goldenrod;
   text-decoration: underline;
 }
