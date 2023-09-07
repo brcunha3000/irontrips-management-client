@@ -1,0 +1,114 @@
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        font-variation-settings: "wght" 200;
+    }
+    50% {
+        font-variation-settings: "wght" 700;
+    }
+    100% {
+        font-variation-settings: "wght" 200;
+    }
+}
+
+.landing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 10px;
+}
+
+.container {
+    margin: 30px 0px;
+    background-color: rgb(188, 188, 188);
+    padding: 30px;
+    border-radius: 20px;
+    width: 80%;
+    box-shadow: 15px 10px 10px rgb(0, 0, 0);
+}
+
+.container h3 {
+    background-color: #ddd;
+    color: #000000;
+    padding: 20px;
+    margin: 0px;
+    width: fit-content;
+    font-weight: 900;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.points p {
+    border-bottom: 1px solid #ece9e9;
+    padding: 15px 15px 15px 0px;
+}
+.points p span:nth-child(1) {
+    color: #279eff;
+    font-weight: 700;
+}
+.points p span:nth-child(2) {
+    color: red;
+    font-weight: 600;
+}
+
+.ladder p {
+    margin: 10px 10px 10px 0px;
+}
+.ladder p span {
+    font-weight: 700;
+}
+.ladder p span:nth-child(1) {
+    color: red;
+}
+.ladder p span:nth-child(2) {
+    color: #279eff;
+}
+
+.powers p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+.powers p span {
+    font-size: 15px;
+    font-weight: 600;
+}
+.powers p .yes {
+    color: #279eff;
+}
+.powers p .no {
+    color: red;
+}
+
+.btnprofile {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+}
+
+div.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+}
+
+div.scrollmenu div {
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 20px;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+div.scrollmenu div:hover {
+    background-color: #777;
+    border-radius: 20px;
+}
+
+/* Favorites cards */

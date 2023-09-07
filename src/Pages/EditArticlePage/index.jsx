@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import "./EditArticlePage.css"
 
 const API_URL = "http://localhost:5005";
 
@@ -15,6 +16,7 @@ function EditArticlePage() {
     const [country, setCountry] = useState("");
     const [countryName, setCountryName] = useState("");
     const [countryImage, setCountryImage] = useState("");
+
     // Uses
     const { articleId } = useParams();
     const navigate = useNavigate();
@@ -136,7 +138,58 @@ function EditArticlePage() {
                     />
                 </label>
                 <button onClick={() => deleteArticle(articleId)}>Delete</button>
-                <button type="submit">Create a New Article</button>
+                <button type="submit">Edit Article</button>
+            </form>
+            <form className="form-style-9">
+                <ul>
+                    <li>
+                        <input
+                            type="text"
+                            name="field1"
+                            className="field-style field-split align-left"
+                            placeholder="Name"
+                        />
+                        <input
+                            type="email"
+                            name="field2"
+                            className="field-style field-split align-right"
+                            placeholder="Email"
+                        />
+                    </li>
+                    <li>
+                        <input
+                            type="text"
+                            name="field3"
+                            className="field-style field-split align-left"
+                            placeholder="Phone"
+                        />
+                        <input
+                            type="url"
+                            name="field4"
+                            className="field-style field-split align-right"
+                            placeholder="Website"
+                        />
+                    </li>
+                    <li>
+                        <input
+                            type="text"
+                            name="field3"
+                            className="field-style field-full align-none"
+                            placeholder="Subject"
+                        />
+                    </li>
+                    <li>
+                        <textarea
+                            name="field5"
+                            className="field-style"
+                            placeholder="Message"
+                            defaultValue={""}
+                        />
+                    </li>
+                    <li>
+                        <input type="submit" defaultValue="Send Message" />
+                    </li>
+                </ul>
             </form>
 
             <Link to={"/user-profile"}>Back</Link>
