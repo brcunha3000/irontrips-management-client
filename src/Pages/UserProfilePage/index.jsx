@@ -29,8 +29,6 @@ function UserProfilePage() {
 
     return (
         <div>
-            {user && <div></div>}
-            <h1>{user.username}</h1>
             <div>
                 <Link to="/user-profile/edit">Edit Profile</Link>
             </div>
