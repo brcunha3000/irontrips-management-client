@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
-const API_URL = "https://irontrips-backend.onrender.com";
+const API_URL = "http://localhost:5005";
 
 function ArticlePage() {
   // State Declaration
@@ -130,7 +130,7 @@ function ArticlePage() {
             <label>
               Gallery:
               <input
-                type="text"
+                type="file"
                 name="gallery"
                 value={gallery}
                 onChange={(e) => setGallery(e.target.value)}

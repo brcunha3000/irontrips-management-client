@@ -1,32 +1,10 @@
+import { Link } from "react-router-dom";
+import './globe.css'
+
 function TheGlobePage() {
-  const handleSelectChange = (e) => {
-    const selectedValue = e.target.value;
-
-    switch (selectedValue) {
-      case "1":
-        window.location.href = "/asia";
-        break;
-      case "2":
-        window.location.href = "/africa";
-        break;
-      case "3":
-        window.location.href = "/europe";
-        break;
-      case "4":
-        window.location.href = "/south-america";
-        break;
-      case "5":
-        window.location.href = "/north-america";
-        break;
-      case "6":
-        window.location.href = "/oceania";
-        break;
-    }
-  };
-
   return (
-    <div>
-      <div className="top-content-community">
+    <div className="main-div-globe">
+      <div className="top-content-globe">
         <div>
           <a
             href="https://www.ironhack.com/pt/en/lisbon"
@@ -34,92 +12,65 @@ function TheGlobePage() {
             rel="noreferrer"
           >
             <img
-              className="top-content-community-ironhack-logo"
+              className="top-content-globe-ironhack-logo"
               src="/images/ironhack-logo.png"
               alt="Ironhack Logo"
             ></img>
           </a>
         </div>
-        <div>
+        <div className="top-content-globe-text">
+        <br></br>
           <h2>Iron Trips - The World Globe</h2>
         </div>
       </div>
       <div>
-        {/*<div>
-          <img
-            src="https://static.mundoeducacao.uol.com.br/mundoeducacao/2022/11/mapa-mundi-indicando-os-seis-continentes-da-terra.jpg"
-            alt="World Map"
-          />
-        </div>*/}
         <div id="box"></div>
-        <div>
-
-        <figure>
-          <img src="https://picsum.photos/id/287/250/300" alt="Mountains"></img>
-          <figcaption>The Day</figcaption>
-        </figure>
-        <figure>
-          <img src="https://picsum.photos/id/475/250/300" alt="Mountains"></img>
-          <figcaption>The Night</figcaption>
-        </figure>
-        {/*}
-          <form action="#">
-            <div className="select-box">
-              <label htmlFor="select-box1" className="label select-box1">
-                <span className="label-desc">Pick the continent</span>{" "}
-              </label>
-              <select
-                id="select-box1"
-                className="select"
-                onChange={handleSelectChange}
-              >
-                <option selected value="">
-                  Select the continent
-                </option>
-                <option value="1">Asia</option>
-                <option value="2">Africa</option>
-                <option value="3">Europe</option>
-                <option value="4">South America</option>
-                <option value="5">North America</option>
-                <option value="6">Oceania</option>
-              </select>
-            </div>
-          </form>*/}
+      </div>
+      <div className="top-content-globe-text">
+        <p>Plan your next trip, pick a continent</p>
+      </div>
+      <br></br>
+      <div className="main-continent-div">
+        <div className="continent-grid">
+          <div className="continent-grid-image-item">
+            <Link to="/asia">
+              <img src="/images/asia.jpg" alt="asia"></img>
+              <p className="text-overlay">Asia</p>
+            </Link>
+          </div>
+          <div className="continent-grid-image-item">
+            <Link to="/africa">
+              <img src="/images/africa.jpg" alt="africa"></img>
+              <span className="text-overlay">Africa</span>
+            </Link>
+          </div>
+          <div className="continent-grid-image-item">
+            <Link to="/europe">
+              <img src="/images/europe.jpg" alt="europe"></img>
+              <span className="text-overlay">Europe</span>
+            </Link>
+          </div>
+          <div className="continent-grid-image-item">
+            <Link to="/north-america">
+              <img src="/images/north-america.jpeg" alt="north-america"></img>
+              <span className="text-overlay">North America</span>
+            </Link>
+          </div>
+          <div className="continent-grid-image-item">
+            <Link to="/south-america">
+              <img src="/images/south-america.jpg" alt="south-america"></img>
+              <span className="text-overlay">South America</span>
+            </Link>
+          </div>
+          <div className="continent-grid-image-item">
+            <Link to="/south-america">
+              <img src="/images/oceania.jpeg" alt="oceania"></img>
+              <span className="text-overlay">Oceania</span>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
-    /*<div className="globe-page-main-container">
-      <div className="globe-page-layout">
-        <div>
-          <img
-            src="https://static.mundoeducacao.uol.com.br/mundoeducacao/2022/11/mapa-mundi-indicando-os-seis-continentes-da-terra.jpg"
-            alt="World Map"
-          />
-        </div>
-        <div className="globe-page-continent-selector">
-          <form action="#">
-            <div className="select-box">
-              <label htmlFor="select-box1" className="label select-box1">
-                <span className="label-desc">Pick the continent</span>{" "}
-              </label>
-              <select
-                id="select-box1"
-                className="select"
-                onChange={handleSelectChange}
-              >
-                <option selected value="">Select the continent</option>
-                <option value="1">Asia</option>
-                <option value="2">Africa</option>
-                <option value="3">Europe</option>
-                <option value="4">South America</option>
-                <option value="5">North America</option>
-                <option value="6">Oceania</option>
-              </select>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>*/
   );
 }
 
