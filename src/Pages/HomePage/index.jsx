@@ -2,6 +2,7 @@ import { Link as ScrollLink } from "react-scroll";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import './homepage.css'
 
 function HomePage() {
   useEffect(() => {
@@ -9,7 +10,7 @@ function HomePage() {
   }, []);
 
   return (
-    <div id="home" data-aos="fade-down">
+    <div id="home" data-aos="fade-down" data-aos-duration="1500">
       <div className="main-div">
         <div className="top-content">
           <div>

@@ -10,20 +10,47 @@ function NavBar() {
   const [isTakingOff, setIsTakingOff] = useState(false);
   const [menuHeight, setMenuHeight] = useState("0px");
 
+  /*
   const toggleMenu = () => {
     setIsTakingOff(!isTakingOff);
-    setMenuHeight(menuHeight === "0px" ? "300px" : "0px"); // Toggle menu height
+    setMenuHeight(menuHeight === "0px" ? "300px" : "0px");
+  };*/
+
+  const openMenu = () => {
+    setIsTakingOff(true);
+    setMenuHeight("300px");
+  };
+
+  const closeMenu = () => {
+    setIsTakingOff(false);
+    setMenuHeight("0px");
   };
 
   useEffect(() => {
     AOS.init();
   }, []);
 
+  /*
+  useEffect(() => {
+    const timerCloseMenu = () => {
+      setIsTakingOff(false);
+      setMenuHeight("0px");
+      }
+
+    if (isTakingOff) {
+    const duration = 3 * 1000; // X seconds converted to milliseconds
+    const timeoutId = setTimeout(timerCloseMenu, duration);
+
+    
+    return () => clearTimeout(timeoutId);
+    }
+  }, [isTakingOff]);
+  */
   return (
-    <div className={`navbar`} data-aos="fade-up" data-aos-duration="3000">
+    <div className={`navbar`} data-aos="fade-up" data-aos-duration="3000" onMouseEnter={openMenu} onMouseLeave={closeMenu}>
       <i
         className={`material-icons${isTakingOff ? " taking-off" : ""}`}
-        onClick={toggleMenu}
+        /*onClick={toggleMenu}*/
       >
         {isTakingOff ? "flight_takeoff" : "flight_land"}
       </i>

@@ -1,4 +1,5 @@
 import axios from "axios";
+import './community.css'
 import { useState, useEffect } from "react";
 
 const API_URL = "http://localhost:5005";
@@ -8,7 +9,9 @@ function CommunityPage() {
   const [searchUser, setSearchUser] = useState("");
 
   useEffect(() => {
-    axios.get(`${API_URL}/community`).then((response) => {
+    axios
+    .get(`${API_URL}/community`)
+    .then((response) => {
       const allUsers = response.data;
       setUsers(allUsers);
     });
@@ -17,23 +20,10 @@ function CommunityPage() {
   const filteredUsers = users.filter((user) =>
     user.username.toLowerCase().includes(searchUser.toLowerCase())
   );
-  console.log(users);
+
   return (
     <div>
       <div className="top-content-community">
-        <div>
-          <a
-            href="https://www.ironhack.com/pt/en/lisbon"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              className="top-content-community-ironhack-logo"
-              src="/images/ironhack-logo.png"
-              alt="Ironhack Logo"
-            ></img>
-          </a>
-        </div>
         <div>
           <h2>Iron Trips - The Community</h2>
         </div>

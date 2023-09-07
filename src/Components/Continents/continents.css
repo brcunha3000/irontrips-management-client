@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Add this line to ensure proper box-sizing */
+  box-sizing: border-box;
 }
 
 svg path {
@@ -16,7 +16,7 @@ svg path {
 }
 
 .active:hover {
-  fill: #006284;
+  fill: goldenrod;
   transition: 0.6s;
   cursor: pointer;
 }
@@ -25,13 +25,13 @@ svg path {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Adjust to 70vh if you want 70% of the viewport height */
-  text-align: center; /* Center the content horizontally */
+  height: 100vh; 
+  text-align: center; 
 }
 
 .svg-element {
-  max-width: 100%; /* Ensure the SVG doesn't overflow the viewport */
-  max-height: 100vh; /* Adjust to 70% of the viewport height */
+  max-width: 100%; 
+  max-height: 100vh;
 }
 
 .text a {
