@@ -3,7 +3,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./EditArticlePage.css"
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://irontrips-backend.onrender.com";
 
 function EditArticlePage() {
     // State Declaration
@@ -16,62 +16,61 @@ function EditArticlePage() {
     const [country, setCountry] = useState("");
     const [countryName, setCountryName] = useState("");
     const [countryImage, setCountryImage] = useState("");
-
     // Uses
     const { articleId } = useParams();
     const navigate = useNavigate();
     /* const storedToken = localStorage.getItem("authToken"); */
 
-    useEffect(() => {
-        axios
-            .get(`${API_URL}/editArticle/${articleId}`)
-            .then((response) => {
-                const currentArticle = response.data;
-                setGeneralComment(currentArticle.generalComment);
-                setReview(currentArticle.review);
-                setOverall(currentArticle.overall);
-                setCost(currentArticle.cost);
-                setGallery(currentArticle.gallery);
-                setCountry(currentArticle.country.cca2);
-                setCountryName(currentArticle.country.name.common);
-                setCountryImage(currentArticle.country.flags.png);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, [articleId]);
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/editArticle/${articleId}`)
+      .then((response) => {
+        const currentArticle = response.data;
+        setGeneralComment(currentArticle.generalComment);
+        setReview(currentArticle.review);
+        setOverall(currentArticle.overall);
+        setCost(currentArticle.cost);
+        setGallery(currentArticle.gallery);
+        setCountry(currentArticle.country.cca2);
+        setCountryName(currentArticle.country.name.common);
+        setCountryImage(currentArticle.country.flags.png);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [articleId]);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const requestBody = {
-            generalComment,
-            review,
-            overall,
-            cost,
-            gallery,
-            country,
-        };
-        axios
-            .put(`${API_URL}/editArticle/${articleId}`, requestBody)
-            .then(() => {
-                // navigate === redirect
-                navigate(`/user-profile`);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const requestBody = {
+      generalComment,
+      review,
+      overall,
+      cost,
+      gallery,
+      country,
     };
+    axios
+      .put(`${API_URL}/editArticle/${articleId}`, requestBody)
+      .then(() => {
+        // navigate === redirect
+        navigate(`/user-profile`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-    const deleteArticle = (articleId) => {
-        axios
-            .delete(`${API_URL}/editArticle/${articleId}`)
-            .then(() => {
-                navigate("/user-profile");
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
+  const deleteArticle = (articleId) => {
+    axios
+      .delete(`${API_URL}/editArticle/${articleId}`)
+      .then(() => {
+        navigate("/user-profile");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
     return (
         <div>
@@ -138,63 +137,12 @@ function EditArticlePage() {
                     />
                 </label>
                 <button onClick={() => deleteArticle(articleId)}>Delete</button>
-                <button type="submit">Edit Article</button>
-            </form>
-            <form className="form-style-9">
-                <ul>
-                    <li>
-                        <input
-                            type="text"
-                            name="field1"
-                            className="field-style field-split align-left"
-                            placeholder="Name"
-                        />
-                        <input
-                            type="email"
-                            name="field2"
-                            className="field-style field-split align-right"
-                            placeholder="Email"
-                        />
-                    </li>
-                    <li>
-                        <input
-                            type="text"
-                            name="field3"
-                            className="field-style field-split align-left"
-                            placeholder="Phone"
-                        />
-                        <input
-                            type="url"
-                            name="field4"
-                            className="field-style field-split align-right"
-                            placeholder="Website"
-                        />
-                    </li>
-                    <li>
-                        <input
-                            type="text"
-                            name="field3"
-                            className="field-style field-full align-none"
-                            placeholder="Subject"
-                        />
-                    </li>
-                    <li>
-                        <textarea
-                            name="field5"
-                            className="field-style"
-                            placeholder="Message"
-                            defaultValue={""}
-                        />
-                    </li>
-                    <li>
-                        <input type="submit" defaultValue="Send Message" />
-                    </li>
-                </ul>
+                <button type="submit">Create a New Article</button>
             </form>
 
-            <Link to={"/user-profile"}>Back</Link>
-        </div>
-    );
+      <Link to={"/user-profile"}>Back</Link>
+    </div>
+  );
 }
 
 export default EditArticlePage;

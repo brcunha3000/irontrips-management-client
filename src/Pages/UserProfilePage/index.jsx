@@ -3,17 +3,13 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./UserProfileEdit.css";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://irontrips-backend.onrender.com";
 
 function UserProfilePage() {
-    // Req body
+  // Req body
 
     const [user, setUser] = useState(null);
     const storedToken = localStorage.getItem("authToken");
-    // Fun facts
-    const [visitedWorld, setVisitedWorld] = useState(0);
-    const [nVisitedCountries, setNVisitedCountries] = useState(0);
-    const [nFavCountries, setNFavCountries] = useState(0);
 
     useEffect(() => {
         axios
@@ -23,10 +19,6 @@ function UserProfilePage() {
             .then((response) => {
                 const oneUser = response.data;
                 setUser(oneUser);
-                const nVisited = oneUser.visitedCountries.length;
-                setVisitedWorld(Math.floor((nVisited * 100) / 195));
-                setNVisitedCountries(nVisited);
-                setNFavCountries(oneUser.favoritesCountries.length);
             })
             .catch((error) => {
                 console.log(error);
