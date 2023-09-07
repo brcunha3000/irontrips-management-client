@@ -6,70 +6,78 @@ import "./UserProfileEdit.css";
 const API_URL = "https://irontrips-backend.onrender.com";
 
 function UserProfilePage() {
-  // Req body
+    // Req body
 
-  const [user, setUser] = useState(null);
-  const storedToken = localStorage.getItem("authToken");
+    const [user, setUser] = useState(null);
+    const storedToken = localStorage.getItem("authToken");
 
-  useEffect(() => {
-    axios
-      .get(`${API_URL}/user-profile`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then((response) => {
-        const oneUser = response.data;
-        setUser(oneUser);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [setUser, storedToken]);
+    useEffect(() => {
+        axios
+            .get(`${API_URL}/user-profile`, {
+                headers: { Authorization: `Bearer ${storedToken}` },
+            })
+            .then((response) => {
+                const oneUser = response.data;
+                setUser(oneUser);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, [setUser, storedToken]);
 
-  console.log(user);
+    console.log(user);
 
-  return (
-    <div>
-      <div>
-        <Link to="/user-profile/edit">Edit Profile</Link>
-      </div>
-      <div>
-        <Link to="/user-profile/newArticle">Create Article</Link>
-      </div>
-      {/* Aqui */}
-      <div>
-        {user && (
-          <div>
-            <div className="wrapper">
-              <div className="user-card">
-                <div className="user-card-img">
-                  <img src={user.profilePicture} alt="" width={80} />
-                  <p>{user.username}</p>
-                </div>
-                <div className="user-card-info">
-                  <h2>
-                    {user.firstName} {user.lastName}
-                  </h2>
-                  <p>
-                    <span>Email:</span> {user.email}
-                  </p>
-                  <p>
-                    <span>Location:</span> Palestine, Gaza Strip
-                  </p>
-                  <p>
-                    <span>Occupation:</span> Web Developer
-                  </p>
-                  <p>
-                    <span>About me:</span> Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
+    return (
+        <div>
+            {user && <div></div>}
+            <h1>{user.username}</h1>
+            <div>
+                <Link to="/user-profile/edit">Edit Profile</Link>
             </div>
-            <div className="landing">
-              <div className="points container">
-                <h3>Fun facts</h3>
-                {/* <p className="first">
+            <div>
+                <Link to="/user-profile/newArticle">Create Article</Link>
+            </div>
+            {/* Aqui */}
+            <div>
+                {user && (
+                    <div>
+                        <div className="wrapper">
+                            <div className="user-card">
+                                <div className="user-card-img">
+                                    <img
+                                        src={user.profilePicture}
+                                        alt=""
+                                        width={80}
+                                    />
+                                    <p>{user.username}</p>
+                                </div>
+                                <div className="user-card-info">
+                                    <h2>
+                                        {user.firstName} {user.lastName}
+                                    </h2>
+                                    <p>
+                                        <span>Email:</span> {user.email}
+                                    </p>
+                                    <p>
+                                        <span>Location:</span> Palestine, Gaza
+                                        Strip
+                                    </p>
+                                    <p>
+                                        <span>Occupation:</span> Web Developer
+                                    </p>
+                                    <p>
+                                        <span>About me:</span> Lorem ipsum dolor
+                                        sit amet, consectetur adipiscing elit,
+                                        sed do eiusmod tempor incididunt ut
+                                        labore et dolore magna aliqua.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="landing">
+                            <div className="points container">
+                                <h3>Fun facts</h3>
+                                {/* <p className="first">
                                     You've visited<span> {visitedWorld}% </span>{" "}
                                     of the
                                     <span> world!</span>
@@ -84,33 +92,41 @@ function UserProfilePage() {
                                     favorite
                                     <span> countries!</span>
                                 </p> */}
-              </div>
-              <div className="container">
-                <h3>Articles</h3>
-                <div className="scrollmenu">
-                  {user.articles.map((article) => {
-                    return (
-                      <div key={article._id}>
-                        <h2>{article.generalComment}</h2>
-                        <h4>
-                          {article.country.flag} {article.country.name.common}
-                        </h4>
+                            </div>
+                            <div className="container">
+                                <h3>Articles</h3>
+                                <div className="scrollmenu">
+                                    {user.articles.map((article) => {
+                                        return (
+                                            <div key={article._id}>
+                                                <h2>
+                                                    {article.generalComment}
+                                                </h2>
+                                                <h4>
+                                                    {article.country.flag}{" "}
+                                                    {
+                                                        article.country.name
+                                                            .common
+                                                    }
+                                                </h4>
 
-                        <Link to={`/editArticle/${article._id}`}>
-                          <div className="pulse">
-                            <span className="material-symbols-outlined">
-                              edit_note
-                            </span>
-                          </div>
-                        </Link>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
+                                                <Link
+                                                    to={`/editArticle/${article._id}`}
+                                                >
+                                                    <div className="pulse">
+                                                        <span className="material-symbols-outlined">
+                                                            edit_note
+                                                        </span>
+                                                    </div>
+                                                </Link>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
 
-              <h3>Favorites Countries</h3>
-              <div className="scrollmenu">
+                            <h3>Favorites Countries</h3>
+                            {/* <div className="scrollmenu">
                 {user.favoritesCountries.map((country) => {
                   return (
                     <div key={country._id}>
@@ -137,26 +153,29 @@ function UserProfilePage() {
                     </div>
                   );
                 })}
-              </div>
-              <div className="container">
-                <h3>Visited Countries</h3>
-                <div className="scrollmenu">
-                  {user.visitedCountries.map((country) => {
-                    return (
-                      <div key={country._id}>
-                        <img src={country.flags.png} width={80} />
-                        <h2>{country.name.common}</h2>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
+              </div> */}
+                            <div className="container">
+                                <h3>Visited Countries</h3>
+                                <div className="scrollmenu">
+                                    {user.visitedCountries.map((country) => {
+                                        return (
+                                            <div key={country._id}>
+                                                <img
+                                                    src={country.flags.png}
+                                                    width={80}
+                                                />
+                                                <h2>{country.name.common}</h2>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
+        </div>
+    );
 }
 
 export default UserProfilePage;

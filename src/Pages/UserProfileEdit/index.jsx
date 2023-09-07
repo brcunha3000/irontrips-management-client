@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import { AuthContext } from "../../Context/auth.context";
 
 const API_URL = "http://localhost:5005";
 
@@ -13,12 +14,112 @@ function UserProfileEdit() {
     const [gender, setGender] = useState("");
     const [nationality, setNationality] = useState("");
     const [username, setUsername] = useState("");
-
+    // Picture
+    const [profilePicture, setProfilePicture] = useState("");
+    const [uploading, setUploading] = useState(false);
     // Uses
     const storedToken = localStorage.getItem("authToken");
     const navigate = useNavigate();
+    // Logout
+    const { logout, tokenUpdate } = useContext(AuthContext);
+
+    // Handles
+    const handleFirstName = (e) => setFirstName(e.target.value);
+    const handleLastName = (e) => setLastName(e.target.value);
+    const handleEmail = (e) => setEmail(e.target.value);
+    const handleGender = (e) => setGender(e.target.value);
+    const handleNationality = (e) => setNationality(e.target.value);
+    const handleUsername = (e) => setUsername(e.target.value);
+
+    const getProfile = async () => {
+        try {
+            const storedToken = localStorage.getItem("authToken");
+
+            const response = await axios.get(`${API_URL}/user-profile`, {
+                headers: { Authorization: `Bearer ${storedToken}` },
+            });
+
+            setFirstName(response.data.firstName);
+            setLastName(response.data.lastName);
+            setEmail(response.data.email);
+            setGender(response.data.gender);
+            setNationality(response.data.nationality);
+            setUsername(response.data.username);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     useEffect(() => {
+        getProfile();
+    }, []);
+
+    const handleImageChange = (e) => {
+        setUploading(true);
+
+        const uploadData = new FormData();
+
+        uploadData.append("img", e.target.files[0]);
+
+        axios
+            .post(`${API_URL}/upload`, uploadData)
+            .then((response) => {
+                setProfilePicture(response.data.fileUrl);
+                console.log(profilePicture);
+                setUploading(false);
+            })
+            .catch((err) =>
+                console.log("Error while uploading the file: ", err)
+            );
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const body = {
+            firstName,
+            lastName,
+            email,
+            gender,
+            nationality,
+            username,
+            profilePicture,
+        };
+        try {
+            const storedToken = localStorage.getItem("authToken");
+
+            await axios.put(`${API_URL}/user-profile`, body, {
+                headers: { Authorization: `Bearer ${storedToken}` },
+            });
+
+            setFirstName("");
+            setLastName("");
+            setEmail("");
+            setGender("");
+            setNationality("");
+            setUsername("");
+            setProfilePicture("");
+
+            navigate(`/user-profile`);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const deleteProfile = async () => {
+        try {
+            const storedToken = localStorage.getItem("authToken");
+
+            await axios.delete(`${API_URL}/user-profile`, {
+                headers: { Authorization: `Bearer ${storedToken}` },
+            });
+
+            logout();
+
+            navigate("/");
+        } catch (error) {}
+    };
+
+    /* useEffect(() => {
         axios
             .get(`${API_URL}/user-profile`, {
                 headers: { Authorization: `Bearer ${storedToken}` },
@@ -59,18 +160,7 @@ function UserProfileEdit() {
             .catch((error) => {
                 console.log(error);
             });
-    };
-
-    const deleteProfile = () => {
-        axios
-            .delete(`${API_URL}/user-profile`)
-            .then(() => {
-                navigate("/user-profile");
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
+    }; */
 
     return (
         <div>
@@ -82,7 +172,7 @@ function UserProfileEdit() {
                         type="text"
                         name="firstName"
                         value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
+                        onChange={handleFirstName}
                     />
                 </label>
                 <label>
@@ -91,7 +181,7 @@ function UserProfileEdit() {
                         type="text"
                         name="lastName"
                         value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
+                        onChange={handleLastName}
                     />
                 </label>
                 <label>
@@ -100,7 +190,7 @@ function UserProfileEdit() {
                         type="text"
                         name="username"
                         value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        onChange={handleUsername}
                     />
                 </label>
                 <label>
@@ -109,15 +199,12 @@ function UserProfileEdit() {
                         type="text"
                         name="email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={handleEmail}
                     />
                 </label>
                 <label>
                     Gender:
-                    <select
-                        name="gender"
-                        onChange={(e) => setGender(e.target.value)}
-                    >
+                    <select name="gender" onChange={handleGender}>
                         <option value="male">Male</option>
                         <option value="female">Female </option>
                         <option value="non-binary">Non binary</option>
@@ -133,9 +220,16 @@ function UserProfileEdit() {
                         type="text"
                         name="nationality"
                         value={nationality}
-                        onChange={(e) => setNationality(e.target.value)}
+                        onChange={handleNationality}
                     />
                 </label>
+                <label htmlFor="image-upload">Image:</label>
+                <input
+                    id="image-upload"
+                    type="file"
+                    name="profilePicture"
+                    onChange={handleImageChange}
+                />
 
                 <button type="submit">Edit Article</button>
             </form>
