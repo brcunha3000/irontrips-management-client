@@ -1,13 +1,13 @@
 .main-div-signup {
-    background-image: url(/images/bg1.png);
-    width: 100%;
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    position: relative;
-    display: flex;
-    flex-direction: column;
+  background-image: url(/images/bg1.png);
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .parent-signup-div {

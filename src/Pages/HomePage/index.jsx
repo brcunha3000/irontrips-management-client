@@ -52,7 +52,7 @@ function HomePage() {
             data-aos-duration="3000"
           >
             <h2>
-              <span className="irontrips-span">Iron Trips</span>: Crafting
+              <span className="irontrips-span dot">Iron Trips:</span> Crafting
               Journeys, Connecting Explorers
             </h2>
             <br></br>
@@ -68,7 +68,7 @@ function HomePage() {
             data-aos="fade-up"
             data-aos-duration="3000"
           >
-            <h2>Who We Are:</h2>
+            <h2><span className="dot">Who We Are:</span></h2>
             <p>
               We're a team of enthusiastic adventurers who double as web
               developers. Our shared love for exploration and technology brought
@@ -81,7 +81,7 @@ function HomePage() {
             data-aos="fade-up"
             data-aos-duration="3000"
           >
-            <h2>Our Purpose:</h2>
+            <h2><span className="dot">Our Purpose:</span></h2>
             <p>
               At Iron Trips, we are more than just a platform - we are a
               community of fellow travelers. Our purpose is to provide you with
@@ -95,7 +95,7 @@ function HomePage() {
             data-aos="fade-up"
             data-aos-duration="3000"
           >
-            <h2>We Offer:</h2>
+            <h2><span className="dot">We Offer:</span></h2>
             <p>
               Whether you're a seasoned globetrotter or a first-time traveler,
               our platform is your companion. We offer tools to map your
@@ -108,7 +108,7 @@ function HomePage() {
             data-aos="fade-up"
             data-aos-duration="3000"
           >
-            <h2>Join Us:</h2>
+            <h2><span className="dot">Join Us</span>:</h2>
             <p>
               Step into the world of Iron Trips, where every click fosters
               connections, preserves memories and fuels wanderlust. We're here
@@ -123,7 +123,7 @@ function HomePage() {
             data-aos-duration="3000"
           >
             <h3>
-              Cheers to exploration and shared stories, The Iron Trips Crew"
+              Cheers to exploration and shared stories, The Iron Trips Crew<span className="dot">.</span>
             </h3>
             <br></br>
           </div>
