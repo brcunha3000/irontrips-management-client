@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "./UserProfileEdit.css";
+import "./UserProfile.css";
 
 const API_URL = "https://irontrips-backend.onrender.com";
 
@@ -25,53 +25,99 @@ function UserProfilePage() {
             });
     }, [setUser, storedToken]);
 
-    console.log(user);
-
     return (
         <div>
-            <div>
-                <Link to="/user-profile/edit">Edit Profile</Link>
-            </div>
+            <div></div>
             <div>
                 <Link to="/user-profile/newArticle">Create Article</Link>
+            </div>
+            <div>
+                <div className="parent-profile-div">
+                    {user && (
+                        <div className="profile">
+                            <h1>
+                                PROFILE<span className="dot">.</span>
+                            </h1>
+
+                            <form>
+                                <div className="imgProfile">
+                                    <div>
+                                        <img
+                                            className="roundedImg"
+                                            src={user.profilePicture}
+                                            width={170}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label>{user.username}</label>
+                                    </div>
+                                </div>
+                                <div className="labelContainer">
+                                    <label>
+                                        <span className="profileTitles">
+                                            Name:{" "}
+                                        </span>
+                                        {user.firstName} {user.lastName}
+                                    </label>
+                                    <label>
+                                        <span className="profileTitles">
+                                            Email:{" "}
+                                        </span>
+                                        {user.email}
+                                    </label>
+                                    <label>
+                                        <span className="profileTitles">
+                                            Nationality:{" "}
+                                        </span>
+                                        {user.nationality}
+                                    </label>
+                                    <label>
+                                        <span className="profileTitles">
+                                            Gender:{" "}
+                                        </span>
+                                        {user.gender}
+                                    </label>
+                                    <label>
+                                        <p className="pProfile">
+                                            <em>
+                                                Member since{" "}
+                                                {new Date(
+                                                    user.createdAt
+                                                ).toLocaleDateString()}
+                                            </em>
+                                        </p>
+                                    </label>
+                                </div>
+                                <div className="btnContainer">
+                                    <div>
+                                        <Link to="/user-profile/edit">
+                                            <button
+                                                className="button-profile-card"
+                                                type="submit"
+                                            >
+                                                EDIT PROFILE
+                                            </button>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    )}
+                </div>
+                <div className="parent-profile-div">
+                    {user && (
+                        <div className="profile">
+                            <h3>
+                                Fun Facts<span className="dot">.</span>
+                            </h3>
+                        </div>
+                    )}
+                </div>
             </div>
             {/* Aqui */}
             <div>
                 {user && (
                     <div>
-                        <div className="wrapper">
-                            <div className="user-card">
-                                <div className="user-card-img">
-                                    <img
-                                        src={user.profilePicture}
-                                        alt=""
-                                        width={80}
-                                    />
-                                    <p>{user.username}</p>
-                                </div>
-                                <div className="user-card-info">
-                                    <h2>
-                                        {user.firstName} {user.lastName}
-                                    </h2>
-                                    <p>
-                                        <span>Email:</span> {user.email}
-                                    </p>
-                                    <p>
-                                        <span>Location:</span> Palestine, Gaza
-                                        Strip
-                                    </p>
-                                    <p>
-                                        <span>Occupation:</span> Web Developer
-                                    </p>
-                                    <p>
-                                        <span>About me:</span> Lorem ipsum dolor
-                                        sit amet, consectetur adipiscing elit,
-                                        sed do eiusmod tempor incididunt ut
-                                        labore et dolore magna aliqua.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
                         <div className="landing">
                             <div className="points container">
                                 <h3>Fun facts</h3>
@@ -159,8 +205,10 @@ function UserProfilePage() {
                                         return (
                                             <div key={country._id}>
                                                 <img
+                                                    className="countriesImg"
                                                     src={country.flags.png}
                                                     width={80}
+                                                    height={50}
                                                 />
                                                 <h2>{country.name.common}</h2>
                                             </div>
