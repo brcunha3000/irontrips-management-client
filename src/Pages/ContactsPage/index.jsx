@@ -12,7 +12,7 @@ function ContactsPage() {
                 <div className="card" style={{ width: "18rem" }}>
                     <img
                         className="card-img-top"
-                        src="/public/images/foto.jpeg"
+                        src="https://res.cloudinary.com/dbyotexip/image/upload/v1694136908/IronTrip/ewwklxdv3yfr3x1v5aiu.jpg"
                         alt="Tiago Rodrigues"
                     />
                     <div className="card-body">
@@ -32,7 +32,7 @@ function ContactsPage() {
                 <div className="card" style={{ width: "18rem" }}>
                     <img
                         className="card-img-top"
-                        src="/public/images/bruno.jpeg"
+                        src="https://res.cloudinary.com/dbyotexip/image/upload/v1694167620/bruno_ykuo4z.jpg"
                         alt="Bruno Cunha"
                     />
                     <div className="card-body">
