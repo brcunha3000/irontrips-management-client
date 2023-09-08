@@ -25,37 +25,40 @@ import UserProfileEdit from "./Pages/UserProfileEdit";
 import EditArticlePage from "./Pages/EditArticlePage";
 
 function App() {
-    const location = useLocation();
-    const isLandingPage = location.pathname === "/";
+  const location = useLocation();
+  const isLandingPage = location.pathname === "/";
 
-    return (
-        <div>
-            <AuthProviderWrapper>
-                {!isLandingPage && <NavBar />}
-                <Routes>
-                    <Route path="/" element={<LandingPage />} />
-                    <Route path="/home" element={<HomePage />} />
-                    <Route path="/auth/signup" element={<SignupPage />} />
-                    <Route path="/auth/login" element={<LoginPage />} />
-                    <Route path="/user-profile" element={<UserProfilePage />} />
-                    <Route path="/user-profile/edit" element={<UserProfileEdit />}/>
-                    <Route path="/user-profile/newArticle" element={<ArticlePage />}/>
-                    <Route path="/editArticle/:articleId" element={<EditArticlePage />}/>
-                    <Route path="/contacts" element={<ContactsPage />} />
-                    <Route path="/community" element={<CommunityPage />}/>
-                    <Route path="/gallery" element={<GalleryPage />} />
-                    <Route path="/theglobe" element={<TheGlobePage />}/>
-                    <Route path="/theglobe/:countryCode" element={<CountryDetailsPage />}/>
-                    <Route path="/south-america" element={<SouthAmerica />} />
-                    <Route path="/north-america" element={<NorthAmerica />} />
-                    <Route path="/africa" element={<Africa />} />
-                    <Route path="/asia" element={<Asia />} />
-                    <Route path="/europe" element={<Europe />} />
-                    <Route path="/oceania" element={<Oceania />}/>                    
-                </Routes>
-            </AuthProviderWrapper>
-        </div>
-    );
+  return (
+    <div>
+      <AuthProviderWrapper>
+        {!isLandingPage && <NavBar />}
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/auth/signup" element={<SignupPage />} />
+          <Route path="/auth/login" element={<LoginPage />} />
+          <Route path="/user-profile" element={<UserProfilePage />} />
+          <Route path="/user-profile/edit" element={<UserProfileEdit />} />
+          <Route path="/user-profile/newArticle" element={<ArticlePage />} />
+          <Route path="/editArticle/:articleId" element={<EditArticlePage />} />
+          <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/community" element={<CommunityPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/theglobe" element={<TheGlobePage />} />
+          <Route
+            path="/theglobe/:countryCode"
+            element={<CountryDetailsPage />}
+          />
+          <Route path="/south-america" element={<SouthAmerica />} />
+          <Route path="/north-america" element={<NorthAmerica />} />
+          <Route path="/africa" element={<Africa />} />
+          <Route path="/asia" element={<Asia />} />
+          <Route path="/europe" element={<Europe />} />
+          <Route path="/oceania" element={<Oceania />} />
+        </Routes>
+      </AuthProviderWrapper>
+    </div>
+  );
 }
 
 export default App;

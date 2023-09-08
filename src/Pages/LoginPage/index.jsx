@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/auth.context";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import './login.css'
+import "./login.css";
 
 const API_URL = "http://localhost:5005";
 
@@ -42,7 +42,6 @@ function LoginPage() {
 
   return (
     <div className="main-div-login">
-
       <div
         className="parent-login-div"
         data-aos="flip-up"
