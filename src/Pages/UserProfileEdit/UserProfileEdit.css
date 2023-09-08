@@ -26,6 +26,7 @@
 .profileEdit .text {
     border: none;
     width: 100%;
+    height: 70px;
     padding: 20px 20px;
     display: block;
     border-radius: 20px;

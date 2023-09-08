@@ -79,7 +79,12 @@ function EditArticlePage() {
                     <h1>
                         Edit Article<span className="dot">.</span>
                     </h1>
-                    <img src={countryImage} alt={countryName} width={100} />
+                    <img
+                        src={countryImage}
+                        alt={countryName}
+                        style={{ marginTop: "20px" }}
+                        width={100}
+                    />
                     <form onSubmit={handleSubmit}>
                         <label>
                             Country:
