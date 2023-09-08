@@ -7,7 +7,9 @@ const API_URL = "https://irontrips-backend.onrender.com";
 
 function UserProfilePage() {
     // Req body
-
+    const [nVisitedCountries, setNVisitedCountries] = useState(0);
+    const [percentageCountries, setPercentageCountries] = useState(0);
+    const [articles, setArticles] = useState("");
     const [user, setUser] = useState(null);
     const storedToken = localStorage.getItem("authToken");
 
@@ -18,6 +20,12 @@ function UserProfilePage() {
             })
             .then((response) => {
                 const oneUser = response.data;
+                setNVisitedCountries(oneUser.visitedCountries.length);
+                const percentage = Math.floor(
+                    (oneUser.visitedCountries.length * 100) / 195
+                );
+                setArticles(oneUser.articles.length);
+                setPercentageCountries(percentage);
                 setUser(oneUser);
             })
             .catch((error) => {
@@ -27,13 +35,9 @@ function UserProfilePage() {
 
     return (
         <div>
-            <div></div>
             <div>
-                <Link to="/user-profile/newArticle">Create Article</Link>
-            </div>
-            <div>
-                <div className="parent-profile-div">
-                    {user && (
+                {user && (
+                    <div className="parent-profile-div">
                         <div className="profile">
                             <h1>
                                 PROFILE<span className="dot">.</span>
@@ -102,108 +106,59 @@ function UserProfilePage() {
                                 </div>
                             </form>
                         </div>
-                    )}
-                </div>
-                <div className="parent-profile-div">
-                    {user && (
-                        <div className="profile">
-                            <h3>
-                                Fun Facts<span className="dot">.</span>
-                            </h3>
-                        </div>
-                    )}
-                </div>
-            </div>
-            {/* Aqui */}
-            <div>
-                {user && (
-                    <div>
-                        <div className="landing">
-                            <div className="points container">
-                                <h3>Fun facts</h3>
-                                {/* <p className="first">
-                                    You've visited<span> {visitedWorld}% </span>{" "}
-                                    of the
-                                    <span> world!</span>
-                                </p>
-                                <p className="second">
-                                    You've visited
-                                    <span> {nVisitedCountries} </span>
-                                    <span> countries!</span>
-                                </p>
-                                <p className="second">
-                                    You've<span> {nFavCountries} </span>{" "}
-                                    favorite
-                                    <span> countries!</span>
-                                </p> */}
-                            </div>
-                            <div className="container">
-                                <h3>Articles</h3>
-                                <div className="scrollmenu">
-                                    {user.articles.map((article) => {
-                                        return (
-                                            <div key={article._id}>
-                                                <h2>
-                                                    {article.generalComment}
-                                                </h2>
-                                                <h4>
-                                                    {article.country.flag}{" "}
-                                                    {
-                                                        article.country.name
-                                                            .common
-                                                    }
-                                                </h4>
-
-                                                <Link
-                                                    to={`/editArticle/${article._id}`}
-                                                >
-                                                    <div className="pulse">
-                                                        <span className="material-symbols-outlined">
-                                                            edit_note
-                                                        </span>
-                                                    </div>
-                                                </Link>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </div>
-
-                            <h3>Favorites Countries</h3>
-                            {/* <div className="scrollmenu">
-                {user.favoritesCountries.map((country) => {
-                  return (
-                    <div key={country._id}>
-                      <article className="card">
-                        <img
-                          className="card__background"
-                          src={country.flags.svg}
-                          alt="Photo of Cartagena's cathedral at the background and some colonial style houses"
-                          width={1920}
-                          height={2193}
-                        />
-                        <div className="card__content | flow">
-                          <div className="card__content--container | flow">
-                            <h2 className="card__title">Colombia</h2>
-                            <p className="card__description">
-                              Lorem ipsum dolor sit amet, consectetur
-                              adipisicing elit. Rerum in labore laudantium
-                              deserunt fugiat numquam.
-                            </p>
-                          </div>
-                          <button className="card__button">Read more</button>
-                        </div>
-                      </article>
                     </div>
-                  );
-                })}
-              </div> */}
-                            <div className="container">
-                                <h3>Visited Countries</h3>
-                                <div className="scrollmenu">
-                                    {user.visitedCountries.map((country) => {
-                                        return (
-                                            <div key={country._id}>
+                )}
+                {user && (
+                    <div className="parent-profile-div">
+                        <div className="profile">
+                            <h2>
+                                Fun Facts<span className="dot">.</span>
+                            </h2>
+                            <br />
+                            <div className="labelFunFacts">
+                                <p className="paragraphFunFacts">
+                                    <span className="dot">.</span>
+                                    <span className="profileTitles">
+                                        You have been to{" "}
+                                        <span className="spanWhite">
+                                            {nVisitedCountries}{" "}
+                                        </span>
+                                        countries, and that means{" "}
+                                        <span className="spanWhite">
+                                            {percentageCountries}%{" "}
+                                        </span>
+                                        of the world you've seen.✈️
+                                    </span>
+                                </p>
+                                <p>
+                                    <span className="dot">.</span>
+
+                                    <span className="profileTitles">
+                                        You have contributed{" "}
+                                        <span className="spanWhite">
+                                            {articles}
+                                        </span>{" "}
+                                        articles to the community.📝
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                )}
+                {user && (
+                    <div className="parent-profile-div">
+                        <div className="profile">
+                            <h2>
+                                Visited Countries<span className="dot">.</span>
+                            </h2>
+                            <br />
+                            <div className="scrollmenu">
+                                {user.visitedCountries.map((country) => {
+                                    return (
+                                        <div key={country._id}>
+                                            <Link
+                                                to={`/theglobe/${country.cca2}`}
+                                            >
                                                 <img
                                                     className="countriesImg"
                                                     src={country.flags.png}
@@ -211,15 +166,99 @@ function UserProfilePage() {
                                                     height={50}
                                                 />
                                                 <h2>{country.name.common}</h2>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
+                                            </Link>
+                                        </div>
+                                    );
+                                })}
                             </div>
                         </div>
                     </div>
                 )}
             </div>
+            {user && (
+                <div className="parent-profile-div">
+                    <div className="profile">
+                        <h2>
+                            My articles<span className="dot">.</span>
+                        </h2>
+                        <br />
+                        <div className="scrollmenuArticles">
+                            {user.articles.map((article) => {
+                                return (
+                                    <div
+                                        key={article._id}
+                                        className="articlesContainer"
+                                    >
+                                        <div className="scrollmenuArticlesv2">
+                                            <h2
+                                                style={{
+                                                    marginBottom: "30px",
+                                                }}
+                                            >
+                                                {article.generalComment}
+                                            </h2>
+                                            <h3
+                                                style={{
+                                                    marginBottom: "30px",
+                                                }}
+                                            >
+                                                {article.country.flag}{" "}
+                                                {article.country.name.common}
+                                            </h3>
+
+                                            <Link
+                                                to={`/editArticle/${article._id}`}
+                                            >
+                                                <div className="pulse">
+                                                    <span className="material-symbols-outlined">
+                                                        edit_note
+                                                    </span>
+                                                </div>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                        <div>
+                            <div className="containerBtnArticle">
+                                <Link to="/user-profile/newArticle">
+                                    <button className="button-profile-card">
+                                        Create Article
+                                    </button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+            {user && (
+                <div className="parent-profile-div">
+                    <div className="profile">
+                        <h2>
+                            Favorites Countries<span className="dot">.</span>
+                        </h2>
+                        <br />
+                        <div className="scrollmenu">
+                            {user.favoritesCountries.map((country) => {
+                                return (
+                                    <div key={country._id}>
+                                        <Link to={`/theglobe/${country.cca2}`}>
+                                            <img
+                                                className="countriesImg"
+                                                src={country.flags.png}
+                                                width={80}
+                                                height={50}
+                                            />
+                                            <h2>{country.name.common}</h2>
+                                        </Link>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
