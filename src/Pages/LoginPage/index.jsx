@@ -92,7 +92,6 @@ function LoginPage() {
             </a>
           </form>
           {errorMessage && <p>{errorMessage}</p>}
-
           <Link to="/auth/signup">Don't have an account yet? Sign Up!</Link>
         </div>
       </div>
