@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import "./countrydetailspage.css";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://irontrips-backend.onrender.com";
 
 function CountryDetailsPage() {
   const [country, setCountry] = useState(null);
@@ -121,13 +121,22 @@ function CountryDetailsPage() {
                 <h5 className="countryinfo-title">
                   Cities<span className="dot">:</span>
                 </h5>{" "}
-                <span className="normal-text">{country.cities.length}</span><br></br>
+                <span className="normal-text">{country.cities.length}</span>
+                <br></br>
                 <br></br>
                 <span className="normal-text">
-                This country has {country.articles.length} articles created by users.
+                  This country has {country.articles.length} articles created by
+                  users.
                 </span>
                 <br></br>
-                <a href={country.maps.googleMaps} target="_blank" rel="noreferrer">Find more about {country.name.common} and look for it on <span className="underlined">google maps</span>!</a>
+                <a
+                  href={country.maps.googleMaps}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Find more about {country.name.common} and look for it on{" "}
+                  <span className="underlined">google maps</span>!
+                </a>
               </div>
             </div>
             <div className="countryinfo-buttons-div">

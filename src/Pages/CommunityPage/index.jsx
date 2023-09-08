@@ -2,7 +2,7 @@ import axios from "axios";
 import "./community.css";
 import { useState, useEffect } from "react";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://irontrips-backend.onrender.com";
 
 function CommunityPage() {
   const [users, setUsers] = useState([]);
@@ -55,11 +55,14 @@ function CommunityPage() {
                     src={user.profilePicture}
                     alt={`${user.firstName} ${user.lastName}`}
                   />
-                  <br></br><br></br>
+                  <br></br>
+                  <br></br>
                   <p className="name">
                     {user.firstName} {user.lastName}
                   </p>
-                  <p><span className="goldenrod-title">{user.username}</span></p>
+                  <p>
+                    <span className="goldenrod-title">{user.username}</span>
+                  </p>
                   <br></br>
                   <p>Visited Countries: {user.visitedCountries.length}</p>
                   <p>

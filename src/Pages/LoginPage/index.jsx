@@ -6,7 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "./login.css";
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://irontrips-backend.onrender.com";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
